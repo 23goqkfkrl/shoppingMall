@@ -1,0 +1,88 @@
+{% extends 'items/base.html' %}
+{% block head_title %}
+    {{post.title}} - itmes
+{% endblock %}
+{% block main_area %}
+            <div id="post-area">
+                {% if post.category %}
+                    <span class="badge badge-secondary float-right">{{post.category}}</span>
+                {% else %}
+                    <span class="badge badge-secondary float-right">미분류</span>
+                {% endif %}
+                {% if post.maker %}
+                    <span class="badge badge-secondary float-right">{{post.maker}}</span>
+                {% else %}
+                    <span class="badge badge-secondary float-right">미등록</span>
+                {% endif %}
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                        {% if post.head_image %}
+                            <img class="card-img-top mb-5 mb-md-0" src="{{ post.head_image.url }}" alt="..." /></div>
+                        {% else %}
+                            <img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/seed/{{post.pk}}/800/200/" alt="..." /></div>
+                        {% endif %}
+                    <div class="col-md-6">
+                        <div class="small mb-1">SKU: BST-498</div>
+                        <h1 class="display-5 fw-bolder">{{ post.title }}</h1>
+                        <div class="fs-5 mb-5">
+                            <span class="text-decoration-line-through">{{ post.price }}</span>
+                        </div>
+                        <p class="lead">{{ post.content }}</p>
+                        <div class="d-flex">
+                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                        {% if user.is_authenticated and user == post.author %}
+                                <a class="btn btn-info btn-sm float-left" href="/items/update_post/{{ post.pk }}/" role="button">
+                                    <i class="fas fa-pen"></i>Edit Post
+                                </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+                <div class="mb-5 my-5">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <!-- Comment form-->
+                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                        <!-- Child comment 1-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                            </div>
+                                        </div>
+                                        <!-- Child comment 2-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                When you put money directly to a problem, it makes a good headline.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single comment-->
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+{% endblock %}
