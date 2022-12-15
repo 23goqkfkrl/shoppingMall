@@ -28,6 +28,17 @@
                             <span class="text-decoration-line-through">{{ post.price }}</span>
                         </div>
                         <p class="lead">{{ post.content }}</p>
+
+                        {% if post.tags.exists %}
+                            <i class="fas fa-tags"></i>
+                            {% for tag in post.tags.iterator %}
+                            <a href="{{ tag.get_absolute_url }}">
+                                <span class="badge badge-pill badge-light">{{ tag }}</span>
+                            </a>
+                            {% endfor %}
+                            </br>
+                            </br>
+                        {% endif %}
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
