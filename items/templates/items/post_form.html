@@ -8,12 +8,21 @@
     <hr/>
 
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
+<<<<<<< HEAD
     {{form | crispy}}
     <div id="div_id_tags_str">
       <label for="id_tags_str">Tags:</label>
       <input type="text" name="tags_str" id="id_tags_str" class="textinput textInput form-control">
     </div>
     <br/>
+=======
+        {{ form | crispy }}
+        <div id="div_id_tags_str">
+            <label for="id_tags_str">Tags:</label>
+            <input type="text" name="tags_str" id="id_tags_str" class="textinput textInput form-control">
+        </div>
+        <br/>
+>>>>>>> f320b3e685a9a930c6550c3ea564fbdb1c777694
     <button type="submit" class="btn btn-primary float-right">Submit</button>
     </form>
 

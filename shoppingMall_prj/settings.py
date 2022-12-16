@@ -39,10 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+<<<<<<< HEAD
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+=======
+<<<<<<< HEAD
+=======
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+>>>>>>> f320b3e685a9a930c6550c3ea564fbdb1c777694
+>>>>>>> 4bb6bb2334b83136574bdd011b5477e6dc54a078
     'items',
     'single_pages'
 ]
@@ -132,6 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+<<<<<<< HEAD
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTHENTICATION_BACKENDS=(
@@ -143,3 +153,20 @@ SITE_ID=1
 ACCOUNT_EMAIL_REQUITED=True
 ACCOUNT_EMAIL_VERIFICATION='none'
 LOGIN_REDIRECT_URL='/items/'
+=======
+<<<<<<< HEAD
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+=======
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+AUTHENTICATION_BACKENDS=(
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID=1
+
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION='none'
+>>>>>>> f320b3e685a9a930c6550c3ea564fbdb1c777694
+>>>>>>> 4bb6bb2334b83136574bdd011b5477e6dc54a078
