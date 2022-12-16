@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Category, Tag, Maker
+from .models import Post, Category, Tag, Maker, Comment
 
 # Register your models here.
 admin.site.register(Post)
@@ -15,3 +15,5 @@ admin.site.register(Tag, TagAdmin)
 class MakerAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 admin.site.register(Maker, MakerAdmin)
+
+admin.site.register(Comment)
