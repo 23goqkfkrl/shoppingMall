@@ -77,13 +77,24 @@
                                 {% if post.comment_set.exists %}
                                     {% for comment in post.comment_set.iterator %}
                                         <div class="d-flex" id="comment-{{ comment.pk }}">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
+                                            <img class="d-flex mr-3 rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" width="60px" alt="..." />
+                                            <div class="media-body">
+                                                {% if user.is_authenticated and comment.author == user %}
+                                                    <a role="button"
+                                                       class="btn btn-sm btn-info float-right"
+                                                       id="comment-{{comment.pk}}-update-btn"
+                                                       href="/items/update_comment/{{ comment.pk }}/">
+                                                        edit
+                                                    </a>
+                                                {% endif %}
                                                 <div class="fw-bold">
                                                     {{ comment.author.username }}
                                                     <small class="text_muted">{{ comment.create_at }}</small>
                                                 </div>
                                                 {{ comment.content | linebreaks }}
+                                                {% if comment.create_at != comment.modified_at %}
+                                                    <p class="text-muted float-right"><small>Update : {{comment.modified_at }}</small></p>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     {% endfor %}
