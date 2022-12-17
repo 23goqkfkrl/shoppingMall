@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             {% if p.head_image %}
-                            <img class="card-img-top" src="{{ p.head_image.url }}" alt="..." />
+                            <img class="card-img-top" width="300" height="300" src="{{ p.head_image.url }}" alt="..." />
                             {% else %}
                             <img class="card-img-top" src="https://picsum.photos/seed/{{post.pk}}/800/200/" alt="random_image">
                             {% endif %}
@@ -43,23 +43,25 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{ p.title }}</h5>
                                     <!-- Product price-->
-                                    {{ p.price }}
-                                    {{ p.content }}
+                                    <h6>{{ p.price }}원</h6>
+                                    <p>{{ p.content }}</p>
                                     {% if p.category %}
-                                        <span class="badge badge-secondary float-right">{{p.category}}</span>
+                                        <span class="badge badge-secondary">{{p.category}}</span>
                                     {% else %}
-                                        <span class="badge badge-secondary float-right">미분류</span>
+                                        <span class="badge badge-secondary">미분류</span>
                                     {% endif %}
+                                    <br/>
                                     {% if p.maker %}
-                                        <span class="badge badge-secondary float-right">{{p.maker}}</span>
+                                        <span class="badge badge-secondary">{{p.maker}}</span>
                                     {% else %}
-                                        <span class="badge badge-secondary float-right">미등록</span>
+                                        <span class="badge badge-secondary">미등록</span>
                                     {% endif %}
+                                    <br/>
                                     {% if p.tags.exists %}
                                         <i class="fas fa-tags"></i>
                                         {% for tag in p.tags.iterator %}
                                             <a href="{{ tag.get_absolute_url }}">
-                                                <span class="badge badge-pill badge-light">{{ tag }}</span>
+                                                <span class="badge badge-pill badge-dark">{{ tag }}</span>
                                             </a>
                                         {% endfor %}
                                         </br>
