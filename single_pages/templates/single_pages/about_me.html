@@ -31,9 +31,32 @@
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <h2>We Can!!</h2>
+                        <h2>내가 단 댓글</h2>
                         <br/>
-                        <p class="lead">안녕</p>
+                        <p class="lead"></p>
+
+
+                        {% for c in comment %}
+                         {% if user.is_authenticated and c.author == user %}
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                <a href="{{c.get_absolute_url }}" class="text-decoration-none text-dark" >
+                                    <b><h6>[{{c.post.title}}]</h6></b>
+                                    <p>{{c.content}}</p>
+                                </a>
+
+
+                                <p><small class="text_muted float-right">{{ c.create_at }}</small></p>
+                                <br/>
+                                {% if c.create_at != c.modified_at %}
+                                    <p class="text-muted float-right"><small>Update : {{c.modified_at }}</small></p>
+                                {% endif %}
+
+                              </div>
+                          </div>
+                        {% endif %}
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
