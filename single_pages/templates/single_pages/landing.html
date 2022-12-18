@@ -37,6 +37,9 @@
                               <div class="col-lg-4">
                                   {% if post.head_image %}
                                   <img class="rounded-circle" width="100px" src="{{ post.head_image.url }}" alt="..." />
+                                  {% else %}
+                                  <img class="rounded-circle" width="100px" src="https://picsum.photos/seed/{{post.pk}}/800/200/" alt="..." />
+
                                     {% endif %}
                               </div>
                               </a>

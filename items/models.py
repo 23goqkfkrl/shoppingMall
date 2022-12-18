@@ -24,7 +24,7 @@ class Maker(models.Model):
     def __str__(self):
         return self.name
 
-    def get_abolute_url(self):
+    def get_absolute_url(self):
         return f'/items/maker/{self.name}/'
 
 class Category(models.Model):
@@ -37,7 +37,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
-    def get_abolute_url(self):
+    def get_absolute_url(self):
         return f'/items/category/{self.slug}/'
 
 class Post(models.Model):

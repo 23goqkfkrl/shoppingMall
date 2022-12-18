@@ -12,6 +12,7 @@ from django.db.models import Q
 class PostList(ListView):
     model = Post
     paginate_by = 4
+    ordering = '-pk'
 
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data()
@@ -214,6 +215,6 @@ def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.user.is_authenticated and request.user == post.author:
         post.delete()
-        return redirect('/')
+        return redirect('/items/')
     else:
         return PermissionDenied

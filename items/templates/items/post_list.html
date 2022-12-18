@@ -3,11 +3,11 @@
 
 
      <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="py-5" style="background-color:Pink">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">쇼핑몰 WeCan</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <p class="lead fw-normal text-white mb-0">다양한 상품들을 만나보세요</p>
                     <h1>{% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}</h1>
                     <h1>{% if maker %}<span class="badge badge-secondary">{{ maker }}</span>{% endif %}</h1>
                     <h1>{% if tag %}<span class="badge badge-light"><i class="fas fa-tags"></i>{{ tag }}  ({{ tag.post_set.count }})</span>{% endif %}</h1>
@@ -44,17 +44,25 @@
                                     <h5 class="fw-bolder">{{ p.title }}</h5>
                                     <!-- Product price-->
                                     <h6>{{ p.price }}원</h6>
-                                    <p>{{ p.get_content_markdown | truncatewords_html:50 | safe }}</p>
-                                    {% if p.category %}
+                                    <p>{{ p.get_content_markdown | truncatechars_html:50 | safe }}</p>
+                                   {% if p.category %}
+                                    <a href="{{p.category.get_absolute_url}}">
                                         <span class="badge badge-secondary">{{p.category}}</span>
+                                    </a>
                                     {% else %}
+                                    <a href="/items/category/no_category">
                                         <span class="badge badge-secondary">미분류</span>
+                                    </a>
                                     {% endif %}
                                     <br/>
                                     {% if p.maker %}
+                                    <a href="{{ p.maker.get_absolute_url }}">
                                         <span class="badge badge-secondary">{{p.maker}}</span>
+                                    </a>
                                     {% else %}
+                                    <a href="/items/maker/no_maker">
                                         <span class="badge badge-secondary">미등록</span>
+                                    </a>
                                     {% endif %}
                                     <br/>
                                     {% if p.tags.exists %}
