@@ -35,7 +35,9 @@
                                  {{post.price}}원
                               </div>
                               <div class="col-lg-4">
+                                  {% if post.head_image %}
                                   <img class="rounded-circle" width="100px" src="{{ post.head_image.url }}" alt="..." />
+                                    {% endif %}
                               </div>
                               </a>
                           </div>

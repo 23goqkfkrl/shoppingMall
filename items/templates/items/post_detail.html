@@ -28,7 +28,7 @@
                         <div class="fs-5 mb-5">
                             <span class="text-decoration-line-through">{{ post.price }}</span>
                         </div>
-                        <p class="lead">{{ post.content }}</p>
+                        <p class="lead">{{ post.get_content_markdown | safe  }}</p>
 
                         {% if post.tags.exists %}
                             <i class="fas fa-tags"></i>

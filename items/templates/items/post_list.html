@@ -44,7 +44,7 @@
                                     <h5 class="fw-bolder">{{ p.title }}</h5>
                                     <!-- Product price-->
                                     <h6>{{ p.price }}원</h6>
-                                    <p>{{ p.content }}</p>
+                                    <p>{{ p.get_content_markdown | truncatewords_html:50 | safe }}</p>
                                     {% if p.category %}
                                         <span class="badge badge-secondary">{{p.category}}</span>
                                     {% else %}

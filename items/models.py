@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+import os
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdown
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -39,7 +42,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
-    content = models.TextField()
+    content = MarkdownxField()
     price = models.IntegerField()
 
     head_image = models.ImageField(upload_to='items/images/%Y/%m/%d/', blank=True)
@@ -55,6 +58,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return f'/items/{self.pk}/'
+
+    def get_content_markdown(self):
+        return markdown(self.content)
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
