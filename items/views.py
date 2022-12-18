@@ -209,3 +209,11 @@ class PostSearch(PostList):
         q=self.kwargs['q']
         context['search_info']=f'Search:{q} ({self.get_queryset().count()})'
         return context
+
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.user.is_authenticated and request.user == post.author:
+        post.delete()
+        return redirect('/')
+    else:
+        return PermissionDenied
